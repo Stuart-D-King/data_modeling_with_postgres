@@ -1,16 +1,16 @@
 ## Udacity Data Engineer Nanodegree
-### Data Modeling with Postgres
-#### Introduction  
+## Data Modeling with Postgres
+### Introduction  
 A startup called Sparkify wants to analyze the data its been collecting on songs and user activity on their new music streaming app. The analytics team is particularly interested in understanding what songs users are listening to. Currently, Sparkify does not have an easy way to query its data, which resides in a directory of JSON logs of user activity on the app, as well as a directory with JSON metadata on the songs in their app.
 
 The company would like a data engineer to create a Postgres database with tables designed to optimize queries on song play analysis.
 
-#### Project Description and Purpose
+### Project Description and Purpose
 Using skills learned about data modeling with Postgres and building ETL pipelines with Python, define fact and dimension tables for a star schema, and write an ETL pipeline that transfers data from files in two local directories into Postgres tables using Python and SQL.
 
 After creating a relational database and standing up a reliable ETL pipeline to ingest additional data, Sparkify will be able to systematically store and easily access data associated with its application users and their activity. The data can then be used by the Sparkify analytics team to extract valuable insights related to application users' behaviors that can be leveraged for application enhancements such as song play recommendations.
 
-#### Datasets
+### Datasets
 The **song dataset** is a subset of real data from the [Million Song Dataset](http://millionsongdataset.com/). Each file is in JSON format and contains metadata about a song and the artist of that song. The files are partitioned by the first three letters of each song's track ID. For example, here are filepaths to two files in this dataset.
 
     song_data/A/B/C/TRABCEI128F424C983.json
@@ -31,10 +31,10 @@ And below is an example of what the data in a log file, 2018-11-12-events.json, 
 
 ![log-data](img/log-data.png)
 
-#### Database Schema
+### Database Schema
 The database is designed using a **star schema** consisting of the following fact and dimension tables. The star schema is appropriate given the simplicity of the data model and the presence of one fact table with accompanying dimension tables. The star schema also supports the stated use case by the Sparkify analytics team to easily query data and quickly output aggregations.
 
-##### Fact Table
+#### Fact Table
 **songplays** - records in log data associated with song plays i.e. records with page `NextSong`
 
 | column name | data type | condition   |
@@ -50,7 +50,7 @@ The database is designed using a **star schema** consisting of the following fac
 | user_agent  | varchar   |             |
 
 
-##### Dimension Tables  
+#### Dimension Tables  
 **users** - users in the app
 
 | column name | data type | condition   |
@@ -95,7 +95,7 @@ The database is designed using a **star schema** consisting of the following fac
 | year        | int       |             |
 | weekday     | int       |             |
 
-#### Steps
+### Steps
 Below are the steps taken to complete the project:
 
 1. Created Tables  
@@ -113,10 +113,10 @@ Below are the steps taken to complete the project:
  - Using `etl.ipynb`, coded all necessary functions in `etl.py` to process all datasets.
  - Confirmed all records were successfully inserted into each table by querying the database.
 
-#### Conclusion
+### Conclusion
 By creating a Postgres database and ETL code to ingest new data, Sparkify and its analytics team now have the tools it needs to better understand how its users are interacting with its music streaming app. Because the project is Pythonic and all scripts have been intuitively structured, the Sparkify analytics team will easily be able to provide ongoing code maintenance and enhancements.
 
-#### Example Queries
+### Example Queries
 The number of song plays by hour to understand when during the day users are using the app more frequently - app usage appears to peak between 3-6pm.
 
     select
